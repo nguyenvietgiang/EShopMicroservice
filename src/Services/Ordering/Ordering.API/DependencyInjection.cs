@@ -13,7 +13,7 @@ public static class DependencyInjection
         services.AddExceptionHandler<CustomExceptionHandler>();
 
         services.AddHealthChecks()
-            .AddSqlServer(configuration.GetConnectionString("Database")!);
+            .AddSqlite(configuration.GetConnectionString("Database")!);
 
         return services;
     }

@@ -11,6 +11,8 @@ builder.Services
     .AddApplicationServices()
     .AddInfrastructureServices(builder.Configuration)
     .AddApiServices(builder.Configuration);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -20,7 +22,9 @@ app.UseApiService();
 
 if (app.Environment.IsDevelopment())
 {
-    await app.InitialiseDatabaseAsync();
+    // await app.InitialiseDatabaseAsync();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.Run();
